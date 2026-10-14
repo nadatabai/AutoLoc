@@ -19,9 +19,11 @@ public class Contrat {
     LocalDate dateSignature;
     Double montantTotal;
     Boolean valide;
+
     @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL,
             orphanRemoval = true, fetch = FetchType.LAZY)
     @ToString.Exclude @EqualsAndHashCode.Exclude
+
     List<Paiement> paiements = new ArrayList<>();
     public void addPaiement(Paiement p) {
         paiements.add(p);
