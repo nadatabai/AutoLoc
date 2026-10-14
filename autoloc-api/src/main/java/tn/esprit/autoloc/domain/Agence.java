@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
+import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
@@ -19,4 +21,10 @@ public class Agence {
     String ville;
     String adresse;
     String telephone;
+    @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+    @ToString.Exclude @EqualsAndHashCode.Exclude
+    List<Vehicule> vehicules = new ArrayList<>();
+    @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+    @ToString.Exclude @EqualsAndHashCode.Exclude
+    List<Employe> employes = new ArrayList<>();
 }

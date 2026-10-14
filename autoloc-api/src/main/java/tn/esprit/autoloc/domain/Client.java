@@ -3,7 +3,10 @@ package tn.esprit.autoloc.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -22,4 +25,13 @@ public class Client {
     String telephone;
     String numPermis;
     LocalDate dateInscription;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ToString.Exclude @EqualsAndHashCode.Exclude
+    List<Reservation> reservations = new ArrayList<>();
+
+    public void addReservation(Reservation r) {
+        reservations.add(r);
+        r.setClient(this);
+    }
 }

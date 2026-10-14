@@ -1,9 +1,7 @@
 package tn.esprit.autoloc.domain;
-
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 @Entity
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
@@ -19,4 +17,8 @@ public class Employe {
     String prenom;
     @Enumerated(EnumType.STRING)
     RoleEmploye role;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_agence")
+    @ToString.Exclude @EqualsAndHashCode.Exclude
+    Agence agence;
 }
