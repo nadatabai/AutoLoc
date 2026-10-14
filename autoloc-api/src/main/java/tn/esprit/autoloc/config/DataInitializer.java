@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.autoloc.domain.*;
-import tn.esprit.autoloc.repository.ContratRepository;
-import tn.esprit.autoloc.repository.VehiculeRepository;
+import tn.esprit.autoloc.repository.IContratRepository;
+import tn.esprit.autoloc.repository.IVehiculeRepository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 @Component
@@ -16,8 +16,8 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class DataInitializer implements CommandLineRunner {
-    VehiculeRepository vehiculeRepository;
-    ContratRepository contratRepository;
+    IVehiculeRepository vehiculeRepository;
+    IContratRepository contratRepository;
     @Override
     @Transactional
     public void run(String... args) {
